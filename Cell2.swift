@@ -33,9 +33,8 @@ class Cell2: UICollectionViewCell {
         label.heightAnchor.constraint(equalToConstant: 50).isActive = true;
     }
     
-    let label : UILabel = {
+    let label : UILabel = { //Label to display the text
         let label = UILabel();
-        //        label.text = ""
         label.translatesAutoresizingMaskIntoConstraints = false;
         return label;
     }();

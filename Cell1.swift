@@ -19,14 +19,14 @@ class Cell1: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewD
         
         setupViews();
         
-        getData();
+        getData(); //Get json Data
         
         collectionView.register(Cell2.self, forCellWithReuseIdentifier: cellId); //register custom UICollectionViewCell class named Cell2
         
         
     }
     
-    func getData(){
+    func getData(){ //Function to get json data from offline file or through URL
         
         // ********************* Read json from url **************************
 //        URLSession.shared.dataTask(with: "some url") { (data, response, error) in
@@ -74,18 +74,19 @@ class Cell1: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewD
     }
     
     func setupViews(){
-        addSubview(collectionView);
+        addSubview(collectionView); // Add collection view to collection view cell
         
-        collectionView.delegate = self;
+        collectionView.delegate = self; //make delegate and data source to self
         collectionView.dataSource = self;
         
-        collectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true;
+        //Since we are inside a collection view cell. leftAnchor means collectionViewCell.left anchor and same as this to other anchors
+        collectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true; //Define size and position of collection vie
         collectionView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true;
         collectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true;
         collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true;
     }
     
-    let collectionView: UICollectionView = {
+    let collectionView: UICollectionView = { //Collection view
         let layout = UICollectionViewFlowLayout();
         layout.scrollDirection = .horizontal; //set scroll direction to horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout);
@@ -95,19 +96,21 @@ class Cell1: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewD
     }();
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! Cell2 ;
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! Cell2 ; //Cast cell as Cell2 so that we can set label
+        
         cell.backgroundColor = .red;
-        cell.moreOption = moreOptions[indexPath.item];
+        cell.moreOption = moreOptions[indexPath.item]; // set moreOption as the array element from moreOptions up above. A bit confusing. 
+        // Cell.moreOption refers to Cell2.moreOption. Don't get confused
         return cell;
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return moreOptions.count;
+        return moreOptions.count; //Count the element of moreOptions to set number of items. Look at the JSON file and count how many objects you will find. I found 12. So there must be 12 cells
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 100);
+        return CGSize(width: 200, height: 100); //set the size of each cell
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

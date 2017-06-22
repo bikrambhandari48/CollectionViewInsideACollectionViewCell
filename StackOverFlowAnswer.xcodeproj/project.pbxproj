@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B80FA1BD1EF7B3E100349780 /* JsonFile.json in Resources */ = {isa = PBXBuildFile; fileRef = B80FA1BC1EF7B3E100349780 /* JsonFile.json */; };
-		B80FA1C01EF7B44600349780 /* MoreOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80FA1BF1EF7B44600349780 /* MoreOptions.swift */; };
-		B80FA1C51EF7B6B300349780 /* Cell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80FA1C41EF7B6B300349780 /* Cell1.swift */; };
-		B80FA1C81EF7B70200349780 /* Cell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80FA1C71EF7B70200349780 /* Cell2.swift */; };
+		B80FA1C51EF7B6B300349780 /* DoctorListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80FA1C41EF7B6B300349780 /* DoctorListCell.swift */; };
+		B80FA1C81EF7B70200349780 /* ScheduleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80FA1C71EF7B70200349780 /* ScheduleListCell.swift */; };
+		B811F4001EF9281E00D50152 /* DoctorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B811F3FF1EF9281E00D50152 /* DoctorList.swift */; };
 		B82FFA151EF6A78900EAAD83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FFA141EF6A78900EAAD83 /* AppDelegate.swift */; };
 		B82FFA171EF6A78900EAAD83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FFA161EF6A78900EAAD83 /* ViewController.swift */; };
 		B82FFA1A1EF6A78900EAAD83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B82FFA181EF6A78900EAAD83 /* Main.storyboard */; };
@@ -39,9 +39,9 @@
 
 /* Begin PBXFileReference section */
 		B80FA1BC1EF7B3E100349780 /* JsonFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JsonFile.json; sourceTree = "<group>"; };
-		B80FA1BF1EF7B44600349780 /* MoreOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptions.swift; sourceTree = "<group>"; };
-		B80FA1C41EF7B6B300349780 /* Cell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell1.swift; sourceTree = "<group>"; };
-		B80FA1C71EF7B70200349780 /* Cell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell2.swift; sourceTree = "<group>"; };
+		B80FA1C41EF7B6B300349780 /* DoctorListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorListCell.swift; sourceTree = "<group>"; };
+		B80FA1C71EF7B70200349780 /* ScheduleListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleListCell.swift; sourceTree = "<group>"; };
+		B811F3FF1EF9281E00D50152 /* DoctorList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorList.swift; sourceTree = "<group>"; };
 		B82FFA111EF6A78900EAAD83 /* StackOverFlowAnswer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackOverFlowAnswer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B82FFA141EF6A78900EAAD83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B82FFA161EF6A78900EAAD83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		B80FA1C11EF7B44E00349780 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B80FA1BF1EF7B44600349780 /* MoreOptions.swift */,
+				B811F3FF1EF9281E00D50152 /* DoctorList.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -101,8 +101,8 @@
 		B80FA1C61EF7B6E900349780 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B80FA1C41EF7B6B300349780 /* Cell1.swift */,
-				B80FA1C71EF7B70200349780 /* Cell2.swift */,
+				B80FA1C41EF7B6B300349780 /* DoctorListCell.swift */,
+				B80FA1C71EF7B70200349780 /* ScheduleListCell.swift */,
 			);
 			name = View;
 			path = ..;
@@ -298,10 +298,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B82FFA171EF6A78900EAAD83 /* ViewController.swift in Sources */,
-				B80FA1C81EF7B70200349780 /* Cell2.swift in Sources */,
-				B80FA1C01EF7B44600349780 /* MoreOptions.swift in Sources */,
+				B80FA1C81EF7B70200349780 /* ScheduleListCell.swift in Sources */,
 				B82FFA151EF6A78900EAAD83 /* AppDelegate.swift in Sources */,
-				B80FA1C51EF7B6B300349780 /* Cell1.swift in Sources */,
+				B811F4001EF9281E00D50152 /* DoctorList.swift in Sources */,
+				B80FA1C51EF7B6B300349780 /* DoctorListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

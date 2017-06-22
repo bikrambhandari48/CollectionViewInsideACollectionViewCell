@@ -1,51 +1,69 @@
 {
-    "MoreOptions": [
-                    {
-                    
-                    "name": "My details"
-                    },
-                    {
-                    
-                    "name": "Products & offers"
-                    },
-                    {
-                    
-                    "name": "Find us"
-                    },
-                    {
-                    
-                    "name": "Bills and upcoming payments"
-                    },
-                    {
-                    
-                    "name": "Get Cardless Cash"
-                    },
-                    {
-                    
-                    "name": "Overseas travel"
-                    },
-                    {
-                    
-                    "name": "Proof of balance"
-                    },
-                    {
-                    
-                    "name": "Security Tips",
-                    
-                    },
-                    {
-                    
-                    "name": "Settings",
-                    
-                    },
-                    {
-                    "name": "Help"
-                    },
-                    {
-                    "name": "Give feedback"
-                    },
-                    {
-                    "name": "CommBank sites",
-                    }
-                    ]
+    "list":[
+            {
+            "DoctorID":"1",
+            "DoctorName":"dr. Sianny suryawati, Sp.Rad",
+            "SpecialityID":"9",
+            "Schedule":[
+                        {
+                        "DoctorID":"1",
+                        "DayName":"Monday",
+                        "FirstHour":"8:00 - 11:00",
+                        "LastHour":"16:00 - 20:00"
+                        },
+                        {
+                        "DoctorID":"1",
+                        "DayName":"Tuesday",
+                        "FirstHour":"8:00 - 11:00",
+                        "LastHour":""
+                        }
+                        ]
+            },
+            {
+            "DoctorID":"2",
+            "DoctorName":"dr. abc suryawati, Sp.Rad",
+            "SpecialityID":"19",
+            "Schedule":[
+                        {
+                        "DoctorID":"2",
+                        "DayName":"Thursday",
+                        "FirstHour":"7:30 - 12:30",
+                        "LastHour":"16:00 - 20:00"
+                        },
+                        {
+                        "DoctorID":"2",
+                        "DayName":"Friday",
+                        "FirstHour":"8:00 - 11:00",
+                        "LastHour":""
+                        },
+                        {
+                        "DoctorID":"2",
+                        "DayName":"Friday",
+                        "FirstHour":"8:00 - 11:00",
+                        "LastHour":""
+                        },
+                        {
+                        "DoctorID":"2",
+                        "DayName":"Friday",
+                        "FirstHour":"8:00 - 11:00",
+                        "LastHour":""
+                        }
+                        ]
+            },
+            {
+            "DoctorID":"3",
+            "DoctorName":"No name",
+            "SpecialityID":"12",
+            "Schedule":[
+                        {
+                        "DoctorID":"2",
+                        "DayName":"Thursday",
+                        "FirstHour":"7:30 - 12:30",
+                        "LastHour":"16:00 - 20:00"
+                        }
+                        ]
+            }
+            
+            ]
 }
+

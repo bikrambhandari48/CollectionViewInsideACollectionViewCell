@@ -10,7 +10,8 @@ import UIKit
 
 class ScheduleListCell: UICollectionViewCell {
     
-    var scheduleList : ScheduleList?{
+    var scheduleList : ScheduleList?
+    {
         didSet{
             if let time1 = scheduleList?.FirstHour, let time2 = scheduleList?.LastHour{ //Safely unwrap value and set the label
                 practiceTime1Label.text = time1;

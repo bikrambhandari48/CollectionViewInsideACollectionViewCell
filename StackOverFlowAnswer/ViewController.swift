@@ -24,8 +24,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         DoctorList.doctorList { (doctorsList) in //Call the completion hanler
             self.doctorsList = doctorsList; //set the above defined doctorsArray with the returned doctorsArray from Model Class
+            self.collectionView.reloadData();
         }
-        
     }
     
     func setupViews() {
@@ -58,6 +58,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // number of rows
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let count = doctorsList?.count { //Count number of doctors
+            print("Count is ", count);
             return count; //return the value
         }
         return 0;

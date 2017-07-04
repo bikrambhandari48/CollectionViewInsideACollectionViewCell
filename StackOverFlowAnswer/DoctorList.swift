@@ -11,11 +11,13 @@ import UIKit
 class DoctorList: NSObject {
     var DoctorName: String?;
     var DoctorID: String?;
-    var SpecialityID: String?
+    var SpecialtyName: String?;
+    var SpecialtyID: String?;
+    var ImageUrl: String?;
     var Schedule : [ScheduleList]?;
     
     override func setValue(_ value: Any?, forKey key: String) { //Called in step 6
-        if key == "Schedule"{
+        if key == "schedule"{
             Schedule = [ScheduleList]();
             
             for schedule in value as! [[String: Any]]{
@@ -32,53 +34,65 @@ class DoctorList: NSObject {
     /* Do not worry first about the complexity of this method. This is pretty straight forward. Let me guide you step by step.
      
      1. First forget about completion completionHandler: ([DoctorList]) -> () code.
-         so think as --- static func doctorList() method as this. pretty simple yes!!
+     so think as --- static func doctorList() method as this. pretty simple yes!!
      2. Parse the JSON file. You already know how to do it. If not then you have to go back and look :):)
-         pretty boring
+     pretty boring
      3. Since we may have a number of doctors so create array of DoctorList
      4. Iterate through each element of JSON
-         Since the key is "list", I am using it to make an array Of dictionary of [String: Any type].
-         oops alot of thing.
+     Since the key is "list", I am using it to make an array Of dictionary of [String: Any type].
+     oops alot of thing.
      5. Create doctorList object
      6. Set the values from JSON to doctorList object.
-         Note: this method will take you above to setValue method. It will check the key. If key is "Schedule" then it will append to DoctorList.Schedule array. If not then it will append to doctorList array. Just think it does.
+     Note: this method will take you above to setValue method. It will check the key. If key is "Schedule" then it will append to DoctorList.Schedule array. If not then it will append to doctorList array. Just think it does.
      7. Append all doctorList to doctorsList array.
-         Note: Do not get confused with doctorList (This one is object of DoctorList) and doctorsList (This one is array of DoctorList)
+     Note: Do not get confused with doctorList (This one is object of DoctorList) and doctorsList (This one is array of DoctorList)
      
      8. Call the completion handler to pass doctorList array.
      We need this in ViewController class to set doctorsList array that is defined in ViewController class
      
      ------ Code in viewDidLoad() in ViewController slass
-         DoctorList.doctorList { (doctorsList) in
-         self.doctorsList = doctorsList;
-         }
+     DoctorList.doctorList { (doctorsList) in
+     self.doctorsList = doctorsList;
+     }
      */
-    static func doctorList(completionHandler: @escaping ([DoctorList]) -> ()){
-        do{
-            let file = Bundle.main.url(forResource: "JsonFile", withExtension: "json"); //Get file
-            let data = try Data(contentsOf: file!); //Get content of file
+    static func doctorList(completionHandler: @escaping([DoctorList]) -> ()){
+        
+        
+        let url = URL(string: "http://national-hospital.id/server_nhmobile/index.php/Querylistener/get_schedulelists/20")
+        
+        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+            if (error != nil){
+                print(error);
+                return;
+            }
             
-            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any]; // Get data as json object
-            
-            var doctorsList = [DoctorList](); //Look step 3
-            
-            for data in json["list"] as! [[String: Any]]{ //Loop through all the array of objects. Step 4
-                let doctorList = DoctorList(); //Step 5
-                doctorList.setValuesForKeys(data); //Step 6
+            do{
                 
-                doctorsList.append(doctorList); //Step 7
-          }
+                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String:Any]; // Get data as json object
+                
+//                print(json)
+                
+                var doctorsList = [DoctorList](); //Look step 3
+                
+                for data in json["list"] as! [[String: Any]]{ //Loop through all the array of objects. Step 4
+                    let doctorList = DoctorList(); //Step 5
+                    
+                    doctorList.setValuesForKeys(data); //Step 6
+                    
+                    doctorsList.append(doctorList); //Step 7
+                }
+                
+                // You need to use this when you are using JSON from url.
+                DispatchQueue.main.async {
+                    completionHandler(doctorsList); //Step 8
+                }
+                
+//                print(doctorsList)
+            }catch let err{
+                print(err);
+            }
             
-            // You need to use this when you are using JSON from url.
-//            DispatchQueue.main.async {
-//                    completionHandler(doctorsList); //Step 8
-//            }
-            
-            
-            completionHandler(doctorsList); //Step 8
-        }catch let err{
-            print(err);
-        }
+        }).resume()
     }
     
     
@@ -89,7 +103,7 @@ class DoctorList: NSObject {
         
         firstDoctorList.DoctorID = "1"; //Set values
         firstDoctorList.DoctorName = "Recha";
-        firstDoctorList.SpecialityID = "9";
+        //        firstDoctorList.SpecialityID = "9";
         
         //Gives 2 column since we have 2 schedules for first doctor
         var schedule1 = [ScheduleList](); //Since we have arrays of schedules for a doctor we se are making a array
@@ -116,7 +130,7 @@ class DoctorList: NSObject {
         
         secondDoctorList.DoctorID = "2";
         secondDoctorList.DoctorName = "Sabina";
-        secondDoctorList.SpecialityID = "19";
+        //        secondDoctorList.SpecialityID = "19";
         
         var schedule2 = [ScheduleList]();
         
@@ -136,7 +150,7 @@ class DoctorList: NSObject {
     }
     
 }
- //Model class for Schedule list
+//Model class for Schedule list
 class ScheduleList: NSObject {
     var DoctorID: String?; //This values matches the schedule values in JSON file. If it doesnot matches then you will get a crash
     var DayName: String?;
